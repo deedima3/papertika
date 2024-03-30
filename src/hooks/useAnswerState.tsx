@@ -16,6 +16,7 @@ type AnswerState = {
   setFlower: (flower: number) => void;
   setActiveNumber: ({ row, column }: { row: number; column: number }) => void;
   setUnansweredChoice: (array: number[]) => void;
+  resetStore: () => void;
 };
 
 type Answer = {
@@ -62,6 +63,7 @@ const useAnswerStore = create<AnswerState>(
       resetStore: () =>
         set(() => ({
           tableState: tableDataHidden,
+          unansweredChoice: asalData,
         })),
     }),
     {
