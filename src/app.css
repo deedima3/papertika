@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Berlin Sans FB";
+  font-style: normal;
+  font-weight: normal;
+  src:
+    local("Berlin Sans FB"),
+    url("BRLNSR.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Berlin Sans FB Bold";
+  font-style: normal;
+  font-weight: normal;
+  src:
+    local("Berlin Sans FB Bold"),
+    url("BRLNSB.woff") format("woff");
+}
+
+@layer base {
+  .font-outline-2 {
+    -webkit-text-stroke: 15px #412416;
+    -webkit-text-stroke-width: 5;
+    -webkit-text-stroke-color: #412416;
+  }
+  .font-outline-4 {
+    text-shadow: 0 0 4px #412416;
+  }
+}
+
+.fix-stroke {
+  paint-order: stroke fill;
+}
