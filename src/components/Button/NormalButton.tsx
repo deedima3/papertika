@@ -17,7 +17,7 @@ const NormalButton = ({ text, type, onClick }: NormalButtonProps) => {
         {text}
       </div>
       <div className="">
-        <NormalButtonBG color="#FFFFFF" />
+        <NormalButtonBG />
       </div>
     </button>
   );

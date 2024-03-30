@@ -1,8 +1,4 @@
-type SVGProps = {
-  color: string;
-};
-
-const ButtonSVGWrapper = ({ color }: SVGProps) => {
+const ButtonSVGWrapper = () => {
   return (
     <svg
       width="352"
