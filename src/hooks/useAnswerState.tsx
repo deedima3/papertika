@@ -15,6 +15,7 @@ type AnswerState = {
   };
   setFlower: (flower: number) => void;
   setActiveNumber: ({ row, column }: { row: number; column: number }) => void;
+  setUnansweredChoice: (array: number[]) => void;
 };
 
 type Answer = {
@@ -47,6 +48,10 @@ const useAnswerStore = create<AnswerState>(
         set(() => ({
           activeFlower: flower,
         })),
+      setUnansweredChoice: (array: number[]) =>
+        set(() => ({
+          unansweredChoice: array,
+        })),
       setActiveNumber: ({ row, column }) =>
         set(() => ({
           activeNumber: {
@@ -75,10 +80,18 @@ const answerJigsaw = ({ row, column, answer }: Answer, state: AnswerState) => {
   }
   if ((column + 10) * (row + 1) == answer) {
     const tempTableState = [...state.tableState];
+    const tempUnansweredChoice = [...state.unansweredChoice];
+
     tempTableState[row][column] = answer;
-    state.unansweredChoice = state.unansweredChoice.filter(
-      (value) => value != answer
-    );
+
+    const index = state.unansweredChoice.findIndex((value) => value == answer);
+    console.log("Index", index);
+
+    if (index != -1) {
+      tempUnansweredChoice.splice(index, 1);
+    }
+
+    state.setUnansweredChoice(tempUnansweredChoice);
     state.setFlower(0);
     state.setActiveNumber({
       row: 0,

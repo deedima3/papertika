@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useAnswerStore } from "../../hooks/useAnswerState";
 
 type AsalTableChildProps = {
@@ -10,16 +9,7 @@ type AsalTableChildProps = {
 const AsalTableChild = ({ data, column, row }: AsalTableChildProps) => {
   const activeNumber = useAnswerStore((state) => state.activeNumber);
   const setActiveNumber = useAnswerStore((state) => state.setActiveNumber);
-  const activeFlower = useAnswerStore((state) => state.activeFlower);
-  const answerJigsaw = useAnswerStore((state) => state.answerJigsaw);
 
-  useEffect(() => {
-    answerJigsaw({
-      row: activeNumber.row,
-      column: activeNumber.column,
-      answer: activeFlower,
-    });
-  }, [activeFlower, activeNumber]);
   if (data == "X") {
     return (
       <button
