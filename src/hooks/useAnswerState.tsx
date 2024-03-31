@@ -5,6 +5,11 @@ import { asalData, tableDataHidden } from "../data/table.data";
 
 type AnswerState = {
   tableState: (string | number)[][];
+  tableAhliState: (string | number)[][];
+  choosenAhli: {
+    row: number;
+    column: number;
+  };
   unansweredChoice: number[];
   isJigsawComplete: boolean;
   answerJigsaw: ({ row, column, answer }: Answer) => void;
@@ -13,6 +18,8 @@ type AnswerState = {
     row: number;
     column: number;
   };
+  setTableAhli: (table: (string | number)[][]) => void;
+  setChoosenAhli: ({ row, column }: { row: number; column: number }) => void;
   setFlower: (flower: number) => void;
   setActiveNumber: ({ row, column }: { row: number; column: number }) => void;
   setUnansweredChoice: (array: number[]) => void;
@@ -34,6 +41,11 @@ const useAnswerStore = create<AnswerState>(
   (persist as unknown as MyPersist)(
     (set) => ({
       tableState: tableDataHidden,
+      tableAhliState: tableDataHidden,
+      choosenAhli: {
+        row: 0,
+        column: 0,
+      },
       unansweredChoice: asalData,
       isJigsawComplete: false,
       activeFlower: 0,
@@ -41,6 +53,17 @@ const useAnswerStore = create<AnswerState>(
         row: 0,
         column: 0,
       },
+      setChoosenAhli: ({ row, column }) =>
+        set(() => ({
+          choosenAhli: {
+            row: row,
+            column: column,
+          },
+        })),
+      setTableAhli: (table) =>
+        set(() => ({
+          tableAhliState: table,
+        })),
       answerJigsaw: (answer: Answer) =>
         set((state) => ({
           tableState: answerJigsaw(answer, state),
@@ -63,6 +86,7 @@ const useAnswerStore = create<AnswerState>(
       resetStore: () =>
         set(() => ({
           tableState: tableDataHidden,
+          tableAhliState: tableDataHidden,
           unansweredChoice: asalData,
         })),
     }),
@@ -82,9 +106,11 @@ const answerJigsaw = ({ row, column, answer }: Answer, state: AnswerState) => {
   }
   if ((column + 10) * (row + 1) == answer) {
     const tempTableState = [...state.tableState];
+    const tempTableAhliState = [...state.tableAhliState];
     const tempUnansweredChoice = [...state.unansweredChoice];
 
     tempTableState[row][column] = answer;
+    tempTableAhliState[row][column] = "Ans";
 
     const index = state.unansweredChoice.findIndex((value) => value == answer);
     console.log("Index", index);
@@ -93,6 +119,7 @@ const answerJigsaw = ({ row, column, answer }: Answer, state: AnswerState) => {
       tempUnansweredChoice.splice(index, 1);
     }
 
+    state.setTableAhli(tempTableAhliState);
     state.setUnansweredChoice(tempUnansweredChoice);
     state.setFlower(0);
     state.setActiveNumber({

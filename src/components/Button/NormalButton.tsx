@@ -13,7 +13,7 @@ const NormalButton = ({ text, type, onClick }: NormalButtonProps) => {
       type={type}
       onClick={onClick}
     >
-      <div className="absolute top-0 bottom-0 left-0 right-0 z-10 w-full my-6 text-center flex justify-center stroke-[#412416] text-[#FFF2C7] font-outline-2 fix-stroke">
+      <div className="absolute top-0 bottom-0 left-0 right-0 z-10 w-full my-6 text-center flex justify-center stroke-[#412416] stext-[#FFF2C7] font-outline-2 fix-stroke">
         {text}
       </div>
       <div className="">
