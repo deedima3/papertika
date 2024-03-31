@@ -1,4 +1,4 @@
-function arrayEquals(a, b) {
+function arrayEquals(a: unknown[], b: unknown[]) {
   return (
     Array.isArray(a) &&
     Array.isArray(b) &&

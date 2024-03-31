@@ -2,11 +2,17 @@ import { useEffect, useMemo, useState } from "react";
 import { useAnswerStore } from "../../hooks/useAnswerState";
 import { motion } from "framer-motion";
 import { arrayEquals } from "../../lib/utils";
+import CheckerButton from "../Button/CheckerButton";
+import { sort } from "radash";
 
 const MultiplicationCard = () => {
   const choosenAhli = useAnswerStore((state) => state.choosenAhli);
   const row = useMemo(() => choosenAhli.row + 1, [choosenAhli]);
   const col = useMemo(() => choosenAhli.column + 10, [choosenAhli]);
+  const setTableAhli = useAnswerStore((state) => state.setTableAhli);
+  const tableAhli = useAnswerStore((state) => state.tableAhliState);
+  const setChoosenAhli = useAnswerStore((state) => state.setChoosenAhli);
+
   const [mult, setMult] = useState<string[]>([]);
   const [multAlt, setMultAlt] = useState<string[]>([]);
   const [add, setAdd] = useState<string[]>([]);
@@ -14,6 +20,16 @@ const MultiplicationCard = () => {
   const [isMultCorrect, setMultCorrect] = useState(false);
   const [isMultAltCorrect, setMultAltCorrect] = useState(false);
   const [isAddCorrect, setAddCorrect] = useState(false);
+  const [isAnswered, setIsAnswered] = useState(false);
+  const isTrue = useMemo(() => {
+    return isMultAltCorrect && isMultCorrect && isAddCorrect;
+  }, [isMultAltCorrect, isAddCorrect, isMultCorrect]);
+
+  useEffect(() => {
+    console.log("IsMult", isMultCorrect);
+    console.log("IsMultAlt", isMultAltCorrect);
+    console.log("IsAdd", isAddCorrect);
+  }, [isMultAltCorrect, isMultCorrect, isAddCorrect]);
 
   useEffect(() => {
     let temp = 0;
@@ -21,9 +37,11 @@ const MultiplicationCard = () => {
       if (temp == 0) {
         temp = parseInt(value);
       } else {
-        temp * parseInt(value);
+        temp = temp * parseInt(value);
       }
     });
+    console.log("MultTemp", temp);
+    console.log("Mult", mult);
     if (temp == row * col) {
       setMultCorrect(true);
     } else {
@@ -32,7 +50,12 @@ const MultiplicationCard = () => {
   }, [col, mult, row]);
 
   useEffect(() => {
-    if (arrayEquals(multAlt, mult)) {
+    if (
+      arrayEquals(
+        sort(multAlt, (f) => parseInt(f)),
+        sort(mult, (f) => parseInt(f))
+      )
+    ) {
       setMultAltCorrect(true);
     } else {
       setMultAltCorrect(false);
@@ -41,7 +64,7 @@ const MultiplicationCard = () => {
 
   useEffect(() => {
     let temp = 0;
-    mult.map((value) => {
+    add.map((value) => {
       temp = temp + parseInt(value);
     });
     if (temp == row * col) {
@@ -49,7 +72,7 @@ const MultiplicationCard = () => {
     } else {
       setAddCorrect(false);
     }
-  }, [col, mult, row]);
+  }, [col, add, row]);
 
   useEffect(() => {
     if (row != 0 && col != 0) {
@@ -243,6 +266,22 @@ const MultiplicationCard = () => {
             />
           </div>
         </motion.div>
+        <CheckerButton
+          isAnswered={isAnswered}
+          isTrue={isTrue}
+          onClick={() => {
+            setIsAnswered(true);
+            setTimeout(() => {
+              const tempTable = [...tableAhli];
+              tempTable[choosenAhli.row][choosenAhli.column] = row * col;
+              setTableAhli(tempTable);
+              setChoosenAhli({
+                row: 0,
+                column: 0,
+              });
+            }, 1000);
+          }}
+        />
       </div>
     </div>
   );
