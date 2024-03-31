@@ -15,7 +15,7 @@ const Asal = () => {
         image="image/background/TestBackground.png"
       >
         <div className="flex gap-5 w-full h-full items-center justify-between min-h-screen px-20">
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-5 w-3/5">
             <AhliTable />
             <div className="flex gap-5">
               <NormalButton

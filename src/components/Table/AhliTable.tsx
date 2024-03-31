@@ -31,7 +31,7 @@ const Table = () => {
       />
       <div className="absolute top-[-70px] w-max">
         <img src="/image/assets/NumpadTitle.png" alt="Numpad Pic" />
-        <p className="w-full text-5xl font-bold stroke-[#412416] text-[#FFF2C7] font-outline-2 fix-stroke absolute top-5 flex justify-center">
+        <p className="w-full text-3xl font-bold stroke-[#412416] text-[#FFF2C7] font-outline-2 fix-stroke absolute top-5 flex justify-center">
           Papan Perkalian Kelompok Ahli
         </p>
       </div>

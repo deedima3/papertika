@@ -1,12 +1,10 @@
 const ButtonSVGWrapper = () => {
   return (
     <svg
-      width="352"
-      height="101"
       viewBox="0 0 352 101"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="active:scale-95 transition-all ease-in-out"
+      className="active:scale-95 transition-all ease-in-out w-72"
     >
       <g clip-path="url(#clip0_41_20103)">
         <path
