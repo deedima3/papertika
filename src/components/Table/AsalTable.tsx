@@ -40,7 +40,7 @@ const Table = () => {
         alt="Number Pad"
         className="w-full object-cover"
       />
-      <div className="absolute top-[-70px] w-max">
+      <div className="absolute top-[-3vh] w-full">
         <img src="/image/assets/NumpadTitle.png" alt="Numpad Pic" />
         <p className="w-full text-3xl font-bold stroke-[#412416] text-[#FFF2C7] font-outline-2 fix-stroke absolute top-5 flex justify-center">
           Papan Perkalian Kelompok Asal

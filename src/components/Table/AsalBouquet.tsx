@@ -7,7 +7,7 @@ const AsalBouquet = () => {
     <div className="flex flex-wrap flex-shrink gap-2 max-h-full max-w-md">
       {unansweredChoice &&
         unansweredChoice
-          .slice(0, 10)
+          .slice(0, 6)
           .map((choice) => <AsalTableFlower data={choice} />)}
     </div>
   );

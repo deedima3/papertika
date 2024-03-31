@@ -22,12 +22,9 @@
 
 @layer base {
   .font-outline-2 {
-    -webkit-text-stroke: 15px #412416;
-    -webkit-text-stroke-width: 5;
+    -webkit-text-stroke: 5vw #412416;
+    -webkit-text-stroke-width: 1vw;
     -webkit-text-stroke-color: #412416;
-  }
-  .font-outline-4 {
-    text-shadow: 0 0 4px #412416;
   }
 }
 
