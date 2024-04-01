@@ -109,7 +109,9 @@ const answerJigsaw = ({ row, column, answer }: Answer, state: AnswerState) => {
     const tempTableAhliState = [...state.tableAhliState];
     const tempUnansweredChoice = [...state.unansweredChoice];
 
-    tempTableState[row][column] = answer;
+    if(typeof answer == 'number'){
+      tempTableState[row][column] = answer;
+    }
     tempTableAhliState[row][column] = "Ans";
 
     const index = state.unansweredChoice.findIndex((value) => value == answer);
