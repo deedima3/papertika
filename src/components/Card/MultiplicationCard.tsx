@@ -271,6 +271,18 @@ const MultiplicationCard = () => {
           isTrue={isTrue}
           onClick={() => {
             setIsAnswered(true);
+            if (row != 0 && col != 0) {
+              const tempArray = [];
+              const tempAddArray = [];
+              tempArray.push(`${col}`);
+              tempArray.push(`${row}`);
+              for (let i = 0; i < col; i++) {
+                tempAddArray.push(`${row}`);
+              }
+              setMult(tempArray);
+              setMultAlt(tempArray.reverse());
+              setAdd(tempAddArray);
+            }
             setTimeout(() => {
               const tempTable = [...tableAhli];
               tempTable[choosenAhli.row][choosenAhli.column] = row * col;
@@ -279,7 +291,7 @@ const MultiplicationCard = () => {
                 row: 0,
                 column: 0,
               });
-            }, 1000);
+            }, 2000);
           }}
         />
       </div>
