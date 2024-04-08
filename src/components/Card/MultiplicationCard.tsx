@@ -22,8 +22,27 @@ const MultiplicationCard = () => {
   const [isAddCorrect, setAddCorrect] = useState(false);
   const [isAnswered, setIsAnswered] = useState(false);
   const isTrue = useMemo(() => {
-    return isMultAltCorrect && isMultCorrect && isAddCorrect;
+    return (
+      isMultAltCorrect &&
+      isMultCorrect &&
+      isAddCorrect &&
+      checkEmptyString(mult) &&
+      checkEmptyString(multAlt) &&
+      checkEmptyString(add)
+    );
   }, [isMultAltCorrect, isAddCorrect, isMultCorrect]);
+
+  const checkEmptyString = (stringArray: string[]) => {
+    if (!stringArray) {
+      return true;
+    }
+    stringArray.map((value) => {
+      if (value == "") {
+        return true;
+      }
+    });
+    return false;
+  };
 
   useEffect(() => {
     console.log("IsMult", isMultCorrect);
