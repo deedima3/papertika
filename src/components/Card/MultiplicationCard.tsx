@@ -30,7 +30,7 @@ const MultiplicationCard = () => {
       checkEmptyString(multAlt) &&
       checkEmptyString(add)
     );
-  }, [isMultAltCorrect, isAddCorrect, isMultCorrect]);
+  }, [isMultAltCorrect, isAddCorrect, isMultCorrect, add, mult, multAlt]);
 
   const checkEmptyString = (stringArray: string[]) => {
     if (!stringArray) {
