@@ -2,8 +2,8 @@ import { createLazyFileRoute, useNavigate } from "@tanstack/react-router";
 import BackgroundLayout from "../components/Layout/BackgroundLayout";
 import NormalButton from "../components/Button/NormalButton";
 import AhliTable from "../components/Table/AhliTable";
-import MultiplicationCard from "../components/Card/MultiplicationCard";
 import { useAnswerStore } from "../hooks/useAnswerState";
+import MultiplicationCardRevised from "../components/Card/MultiplicationCardRevised";
 
 const Asal = () => {
   const navigate = useNavigate({ from: "/" });
@@ -26,7 +26,7 @@ const Asal = () => {
             </div>
           </div>
           {selectedChoosen.column && selectedChoosen.row && (
-            <MultiplicationCard />
+            <MultiplicationCardRevised />
           )}
         </div>
       </BackgroundLayout>
