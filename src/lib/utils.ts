@@ -7,4 +7,16 @@ function arrayEquals(a: unknown[], b: unknown[]) {
   );
 }
 
-export { arrayEquals };
+const checkEmptyString = (stringArray: string[]) => {
+  if (!stringArray) {
+    return true;
+  }
+  stringArray.map((value) => {
+    if (value == "") {
+      return true;
+    }
+  });
+  return false;
+};
+
+export { arrayEquals, checkEmptyString };

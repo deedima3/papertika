@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useAnswerStore } from "../../hooks/useAnswerState";
 import { motion } from "framer-motion";
-import { arrayEquals } from "../../lib/utils";
+import { arrayEquals, checkEmptyString } from "../../lib/utils";
 import CheckerButton from "../Button/CheckerButton";
 import { sort } from "radash";
 
@@ -31,18 +31,6 @@ const MultiplicationCard = () => {
       checkEmptyString(add)
     );
   }, [isMultAltCorrect, isAddCorrect, isMultCorrect, add, mult, multAlt]);
-
-  const checkEmptyString = (stringArray: string[]) => {
-    if (!stringArray) {
-      return true;
-    }
-    stringArray.map((value) => {
-      if (value == "") {
-        return true;
-      }
-    });
-    return false;
-  };
 
   useEffect(() => {
     console.log("IsMult", isMultCorrect);
@@ -303,9 +291,11 @@ const MultiplicationCard = () => {
               setAdd(tempAddArray);
             }
             setTimeout(() => {
-              const tempTable = [...tableAhli];
-              tempTable[choosenAhli.row][choosenAhli.column] = row * col;
-              setTableAhli(tempTable);
+              if (isTrue) {
+                const tempTable = [...tableAhli];
+                tempTable[choosenAhli.row][choosenAhli.column] = row * col;
+                setTableAhli(tempTable);
+              }
               setChoosenAhli({
                 row: 0,
                 column: 0,
