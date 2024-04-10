@@ -18,7 +18,7 @@ const AsalTableFlower = ({ data }: AsalTableFlowerProps) => {
       <img
         src="/image/assets/Flower.png"
         alt="Flower"
-        className={`w-48 ${activeFlower == data ? "animate-spin scale-110" : ""}`}
+        className={`w-48 ${activeFlower == data ? "animate-scale scale-110" : ""}`}
       />
     </button>
   );

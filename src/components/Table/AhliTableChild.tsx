@@ -13,7 +13,7 @@ const AsalTableChild = ({ data, column, row }: AsalTableChildProps) => {
   if (data == "X") {
     return (
       <button
-        className={`w-14 flex items-center justify-center ${choosenAhli.column == column && choosenAhli.row == row ? "animate-spin" : ""}`}
+        className={`w-14 flex items-center justify-center ${choosenAhli.column == column && choosenAhli.row == row ? "animate-scale-slow" : ""}`}
       >
         <img
           src="/image/assets/Btn_Sec.png"
@@ -26,7 +26,7 @@ const AsalTableChild = ({ data, column, row }: AsalTableChildProps) => {
   if (data == "Ans") {
     return (
       <button
-        className={`w-14 flex items-center justify-center ${choosenAhli.column == column && choosenAhli.row == row ? "animate-spin" : ""}`}
+        className={`w-14 flex items-center justify-center ${choosenAhli.column == column && choosenAhli.row == row ? "animate-scale-slow" : ""}`}
         onClick={() =>
           setChoosenAhli({
             row: row,

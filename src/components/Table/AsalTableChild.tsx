@@ -13,7 +13,7 @@ const AsalTableChild = ({ data, column, row }: AsalTableChildProps) => {
   if (data == "X") {
     return (
       <button
-        className={`w-14 flex items-center justify-center ${activeNumber.column == column && activeNumber.row == row ? "animate-spin" : ""}`}
+        className={`w-14 flex items-center justify-center ${activeNumber.column == column && activeNumber.row == row ? "animate-scale-slow" : ""}`}
         onClick={() =>
           setActiveNumber({
             row: row,
