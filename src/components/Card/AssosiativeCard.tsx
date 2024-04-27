@@ -83,6 +83,8 @@ const MultiplicationCardRevised = () => {
             setTableAhli(tempTable);
             setIsTrue(true);
             rightAudio.play();
+          } else {
+            wrongAudio.play();
           }
           setTimeout(() => {
             setChoosenAhli({
@@ -91,7 +93,6 @@ const MultiplicationCardRevised = () => {
             });
             setIsAnswered(false);
             setIsTrue(false);
-            wrongAudio.play();
             setMult("");
             setMultAlt("");
           }, 5000);
