@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { useAnswerStore } from "../../hooks/useAnswerState";
 import { motion } from "framer-motion";
 import CheckerButton from "../Button/CheckerButton";
+import { rightAudio, wrongAudio } from "../../lib/sound";
 
 const MultiplicationCardRevised = () => {
   const choosenAhli = useAnswerStore((state) => state.choosenAhli);
@@ -81,6 +82,7 @@ const MultiplicationCardRevised = () => {
             tempTable[choosenAhli.row][choosenAhli.column] = row * col;
             setTableAhli(tempTable);
             setIsTrue(true);
+            rightAudio.play();
           }
           setTimeout(() => {
             setChoosenAhli({
@@ -89,6 +91,7 @@ const MultiplicationCardRevised = () => {
             });
             setIsAnswered(false);
             setIsTrue(false);
+            wrongAudio.play();
             setMult("");
             setMultAlt("");
           }, 5000);

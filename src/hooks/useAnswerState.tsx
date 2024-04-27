@@ -2,6 +2,7 @@ import { create, type StateCreator } from "zustand";
 import { createJSONStorage, type PersistOptions } from "zustand/middleware";
 import { persist } from "zustand/middleware";
 import { asalData, tableDataHidden } from "../data/table.data";
+import { rightAudio, wrongAudio } from "../lib/sound";
 
 type AnswerState = {
   tableState: (string | number)[][];
@@ -111,8 +112,10 @@ const answerJigsaw = ({ row, column, answer }: Answer, state: AnswerState) => {
 
     if (typeof answer == "number") {
       tempTableState[row][column] = answer;
+      rightAudio.play();
+    } else {
+      tempTableAhliState[row][column] = "Ans";
     }
-    tempTableAhliState[row][column] = "Ans";
 
     const index = state.unansweredChoice.findIndex((value) => value == answer);
     console.log("Index", index);
@@ -130,6 +133,7 @@ const answerJigsaw = ({ row, column, answer }: Answer, state: AnswerState) => {
     });
     return tempTableState;
   }
+  wrongAudio.play();
   state.setFlower(0);
   state.setActiveNumber({
     row: 0,
