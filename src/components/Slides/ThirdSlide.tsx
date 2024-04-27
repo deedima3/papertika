@@ -1,7 +1,7 @@
 const ThirdSlide = () => {
   return (
     <div className="flex flex-col relative w-4/5 h-max">
-      <p className="absolute top-0 font-sans text-2xl px-10 py-16 h-max">
+      <p className="absolute top-0 font-sans text-2xl px-10 py-16 h-max stroke-[#412416] text-[#FFF2C7] font-outline-2 fix-stroke ">
         Hukum pengelompokkan terjadi apabila hasil dari perkalian sama walaupun
         dikerjakan dari mana saja.
         <br />

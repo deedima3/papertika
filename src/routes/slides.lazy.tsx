@@ -25,7 +25,7 @@ const Slides = () => {
               text={"Back"}
               type={"button"}
               onClick={() =>
-                setSelectedSlides(selectedSlide == 0 ? 3 : selectedSlide - 1)
+                setSelectedSlides(selectedSlide == 0 ? 2 : selectedSlide - 1)
               }
             />
             <NormalButton
