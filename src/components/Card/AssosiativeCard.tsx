@@ -1,22 +1,19 @@
 import { useMemo, useState } from "react";
-import { useAnswerStore } from "../../hooks/useAnswerState";
 import { motion } from "framer-motion";
 import CheckerButton from "../Button/CheckerButton";
 import { rightAudio, wrongAudio } from "../../lib/sound";
+import { useAssosiativeStore } from "../../hooks/useAssosiativeState";
 
-const MultiplicationCardRevised = () => {
-  const choosenAhli = useAnswerStore((state) => state.choosenAhli);
+const AssosiativeCard = () => {
+  const choosenAhli = useAssosiativeStore((state) => state.activeColumn);
   const row = useMemo(() => choosenAhli.row + 1, [choosenAhli]);
-  const col = useMemo(() => choosenAhli.column + 10, [choosenAhli]);
-  const setTableAhli = useAnswerStore((state) => state.setTableAhli);
-  const tableAhli = useAnswerStore((state) => state.tableAhliState);
-  const setChoosenAhli = useAnswerStore((state) => state.setChoosenAhli);
+  const col = useMemo(() => choosenAhli.col + 11, [choosenAhli]);
+  const setChoosenAhli = useAssosiativeStore((state) => state.setActiveColumn);
+  const tableState = useAssosiativeStore((state) => state.tableState);
+  const setTableState = useAssosiativeStore((state) => state.setTable);
 
-  const [mult, setMult] = useState<string>("");
-  const [multAlt, setMultAlt] = useState<string>("");
-
+  const [mult, setMult] = useState<string[]>([]);
   const [isTrue, setIsTrue] = useState<boolean>(false);
-
   const [isAnswered, setIsAnswered] = useState(false);
 
   return (
@@ -36,25 +33,40 @@ const MultiplicationCardRevised = () => {
           <div className="bg-[#7F492D] rounded-md px-5 py-10 text-xl font-bold text-[#FFF2C7] ">
             <div className="flex flex-col gap-10">
               <div className="flex gap-5">
+                <p>(</p>
                 <p>{row}</p>
                 <p>X</p>
-                <input
-                  value={mult}
-                  onChange={(e) => {
-                    setMult(e.target.value);
-                  }}
-                  className="bg-transparent border-b-2 border-[#FFF2C7] w-16 focus:outline-none px-2"
-                />
+                <p>{col}</p>
+                <p>)</p>
+                <p>X</p>
+                <p>{row}</p>
                 <p>=</p>
+              </div>
+              <div className="flex gap-3">
+                <p>{row}</p>
+                <p>X</p>
+                <p>(</p>
                 <input
-                  value={multAlt}
+                  value={mult[0]}
                   onChange={(e) => {
-                    setMultAlt(e.target.value);
+                    const tempMult = [...mult];
+                    tempMult[0] = e.target.value;
+                    setMult(tempMult);
                   }}
                   className="bg-transparent border-b-2 border-[#FFF2C7] w-16 focus:outline-none px-2"
                 />
                 <p>X</p>
-                <p>{row}</p>
+                <input
+                  value={mult[1]}
+                  onChange={(e) => {
+                    const tempMult = [...mult];
+                    tempMult[1] = e.target.value;
+                    setMult(tempMult);
+                  }}
+                  className="bg-transparent border-b-2 border-[#FFF2C7] w-16 focus:outline-none px-2"
+                />
+                <p>)</p>
+                <p>=</p>
               </div>
             </div>
           </div>
@@ -75,26 +87,28 @@ const MultiplicationCardRevised = () => {
         isTrue={isTrue}
         onClick={() => {
           setIsAnswered(true);
-          setMult(col.toString());
-          setMultAlt(col.toString());
-          if (mult && multAlt && mult == multAlt) {
-            const tempTable = [...tableAhli];
-            tempTable[choosenAhli.row][choosenAhli.column] = row * col;
-            setTableAhli(tempTable);
-            setIsTrue(true);
-            rightAudio.play();
-          } else {
-            wrongAudio.play();
+          if (mult[0] && mult[1]) {
+            if (
+              (parseInt(mult[0]) == row && parseInt(mult[1]) == col) ||
+              (parseInt(mult[0]) == col && parseInt(mult[1]) == row)
+            ) {
+              rightAudio.play();
+              setIsTrue(true);
+              const tempTable = [...tableState];
+              tempTable[choosenAhli.row][choosenAhli.col] = row * col * row;
+              setTableState(tempTable);
+            } else {
+              wrongAudio.play();
+            }
           }
           setTimeout(() => {
             setChoosenAhli({
               row: 0,
-              column: 0,
+              col: 0,
             });
             setIsAnswered(false);
             setIsTrue(false);
-            setMult("");
-            setMultAlt("");
+            setMult([]);
           }, 5000);
         }}
       />
@@ -102,4 +116,4 @@ const MultiplicationCardRevised = () => {
   );
 };
 
-export default MultiplicationCardRevised;
+export default AssosiativeCard;

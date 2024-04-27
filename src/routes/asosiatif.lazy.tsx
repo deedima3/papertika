@@ -1,9 +1,9 @@
 import { createLazyFileRoute, useNavigate } from "@tanstack/react-router";
 import BackgroundLayout from "../components/Layout/BackgroundLayout";
 import NormalButton from "../components/Button/NormalButton";
-import MultiplicationCardRevised from "../components/Card/MultiplicationCardRevised";
 import AssoDistiTable from "../components/Table/AssoDistiTable";
 import { useAssosiativeStore } from "../hooks/useAssosiativeState";
+import AssosiativeCard from "../components/Card/AssosiativeCard";
 
 const Asosiatif = () => {
   const navigate = useNavigate({ from: "/komutatif" });
@@ -33,9 +33,7 @@ const Asosiatif = () => {
               />
             </div>
           </div>
-          {activeColumn.col && activeColumn.row && (
-            <MultiplicationCardRevised />
-          )}
+          {activeColumn.col && activeColumn.row && <AssosiativeCard />}
         </div>
       </BackgroundLayout>
     </>
