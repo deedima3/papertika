@@ -1,7 +1,11 @@
 import { create, type StateCreator } from "zustand";
 import { createJSONStorage, type PersistOptions } from "zustand/middleware";
 import { persist } from "zustand/middleware";
-import { asalData, tableDataHidden } from "../data/table.data";
+import {
+  asalData,
+  tableDataHidden,
+  tableDataHiddenAhli,
+} from "../data/table.data";
 import { rightAudio, wrongAudio } from "../lib/sound";
 
 type AnswerState = {
@@ -42,7 +46,7 @@ const useAnswerStore = create<AnswerState>(
   (persist as unknown as MyPersist)(
     (set) => ({
       tableState: tableDataHidden,
-      tableAhliState: tableDataHidden,
+      tableAhliState: tableDataHiddenAhli,
       choosenAhli: {
         row: 0,
         column: 0,
@@ -67,7 +71,7 @@ const useAnswerStore = create<AnswerState>(
         })),
       answerJigsaw: (answer: Answer) =>
         set((state) => ({
-          tableState: answerJigsaw(answer, state),
+          tableState: generateAnswerJigsaw(answer, state),
         })),
       setFlower: (flower: number) =>
         set(() => ({
@@ -87,7 +91,7 @@ const useAnswerStore = create<AnswerState>(
       resetStore: () =>
         set(() => ({
           tableState: tableDataHidden,
-          tableAhliState: tableDataHidden,
+          tableAhliState: tableDataHiddenAhli,
           unansweredChoice: asalData,
         })),
     }),
@@ -98,7 +102,10 @@ const useAnswerStore = create<AnswerState>(
   )
 );
 
-const answerJigsaw = ({ row, column, answer }: Answer, state: AnswerState) => {
+const generateAnswerJigsaw = (
+  { row, column, answer }: Answer,
+  state: AnswerState
+) => {
   console.log("Row", row);
   console.log("Column", column);
   console.log("Answer", answer);
@@ -113,9 +120,9 @@ const answerJigsaw = ({ row, column, answer }: Answer, state: AnswerState) => {
     if (typeof answer == "number") {
       tempTableState[row][column] = answer;
       rightAudio.play();
-    } else {
-      tempTableAhliState[row][column] = "Ans";
     }
+
+    tempTableAhliState[row][column] = "Ans";
 
     const index = state.unansweredChoice.findIndex((value) => value == answer);
     console.log("Index", index);

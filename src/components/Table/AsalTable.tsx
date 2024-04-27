@@ -14,7 +14,7 @@ const Table = () => {
       column: activeNumber.column,
       answer: activeFlower,
     });
-  }, [activeFlower, activeNumber]);
+  }, [activeFlower, activeNumber, answerJigsaw]);
   return (
     <div className="relative w-full flex items-center justify-center">
       <div className="flex flex-col gap-12 absolute top-0 bottom-0 w-full mx-10 my-10 justify-center items-center">
