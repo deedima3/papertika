@@ -16,13 +16,29 @@ import { Route as rootRoute } from './routes/__root'
 
 // Create Virtual Routes
 
+const TutorialLazyImport = createFileRoute('/tutorial')()
+const SlidesLazyImport = createFileRoute('/slides')()
 const SelectLazyImport = createFileRoute('/select')()
 const ProfileLazyImport = createFileRoute('/profile')()
+const KomutatifLazyImport = createFileRoute('/komutatif')()
+const EvaluasiLazyImport = createFileRoute('/evaluasi')()
+const DistributifLazyImport = createFileRoute('/distributif')()
+const AsosiatifLazyImport = createFileRoute('/asosiatif')()
 const AsalLazyImport = createFileRoute('/asal')()
 const AhliLazyImport = createFileRoute('/ahli')()
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
+
+const TutorialLazyRoute = TutorialLazyImport.update({
+  path: '/tutorial',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/tutorial.lazy').then((d) => d.Route))
+
+const SlidesLazyRoute = SlidesLazyImport.update({
+  path: '/slides',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/slides.lazy').then((d) => d.Route))
 
 const SelectLazyRoute = SelectLazyImport.update({
   path: '/select',
@@ -33,6 +49,26 @@ const ProfileLazyRoute = ProfileLazyImport.update({
   path: '/profile',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/profile.lazy').then((d) => d.Route))
+
+const KomutatifLazyRoute = KomutatifLazyImport.update({
+  path: '/komutatif',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/komutatif.lazy').then((d) => d.Route))
+
+const EvaluasiLazyRoute = EvaluasiLazyImport.update({
+  path: '/evaluasi',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/evaluasi.lazy').then((d) => d.Route))
+
+const DistributifLazyRoute = DistributifLazyImport.update({
+  path: '/distributif',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/distributif.lazy').then((d) => d.Route))
+
+const AsosiatifLazyRoute = AsosiatifLazyImport.update({
+  path: '/asosiatif',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/asosiatif.lazy').then((d) => d.Route))
 
 const AsalLazyRoute = AsalLazyImport.update({
   path: '/asal',
@@ -65,12 +101,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AsalLazyImport
       parentRoute: typeof rootRoute
     }
+    '/asosiatif': {
+      preLoaderRoute: typeof AsosiatifLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/distributif': {
+      preLoaderRoute: typeof DistributifLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/evaluasi': {
+      preLoaderRoute: typeof EvaluasiLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/komutatif': {
+      preLoaderRoute: typeof KomutatifLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/profile': {
       preLoaderRoute: typeof ProfileLazyImport
       parentRoute: typeof rootRoute
     }
     '/select': {
       preLoaderRoute: typeof SelectLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/slides': {
+      preLoaderRoute: typeof SlidesLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/tutorial': {
+      preLoaderRoute: typeof TutorialLazyImport
       parentRoute: typeof rootRoute
     }
   }
@@ -82,8 +142,14 @@ export const routeTree = rootRoute.addChildren([
   IndexLazyRoute,
   AhliLazyRoute,
   AsalLazyRoute,
+  AsosiatifLazyRoute,
+  DistributifLazyRoute,
+  EvaluasiLazyRoute,
+  KomutatifLazyRoute,
   ProfileLazyRoute,
   SelectLazyRoute,
+  SlidesLazyRoute,
+  TutorialLazyRoute,
 ])
 
 /* prettier-ignore-end */

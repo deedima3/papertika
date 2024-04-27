@@ -24,6 +24,16 @@ const Select = () => {
             onClick={() => navigate({ to: "/ahli" })}
           />
           <NormalButton
+            text={"Materi"}
+            type={"button"}
+            onClick={() => navigate({ to: "/slides" })}
+          />
+          <NormalButton
+            text={"Evaluasi"}
+            type={"button"}
+            onClick={() => navigate({ to: "/evaluasi" })}
+          />
+          <NormalButton
             text={"Kembali ke Awal"}
             type={"button"}
             onClick={() => navigate({ to: "/" })}

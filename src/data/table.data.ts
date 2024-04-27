@@ -21,4 +21,51 @@ const asalData = [
   78, 90, 96, 102,
 ];
 
-export { tableData, tableDataHidden, asalData };
+const assosiativeData = [
+  ["Mult", 12, 13, 14, 15],
+  [2, 48, "X", "X", 60],
+  [3, 108, 117, "X", "X"],
+  [4, "X", "X", 224, 240],
+  [5, "X", 325, "X", 240],
+  [6, 432, "X", 504, "X"],
+];
+
+const distibutiveData = [
+  ["Mult", 12, 13, 14, 15],
+  [2, 28, "X", "X", 34],
+  [3, 45, 48, "X", "X"],
+  [4, "X", "X", 72, 76],
+  [5, "X", 90, "X", 100],
+  [6, 108, "X", 120, "X"],
+];
+
+const evalQuestion = {
+  question: "Manakah yang merupakan hukum komutatif dan asosiatif",
+  answer: [
+    {
+      choice: "37 x 5 = 5 x 37",
+      isTrue: true,
+    },
+    {
+      choice: "38 x 9 = 25 x 6",
+      isTrue: false,
+    },
+    {
+      choice: "(7 x 8) x 2 = 7 x (8 x 2)",
+      isTrue: true,
+    },
+    {
+      choice: "7 x (8 + 2) = (7x 8) + (7 x 2)",
+      isTrue: false,
+    },
+  ],
+};
+
+export {
+  tableData,
+  tableDataHidden,
+  asalData,
+  assosiativeData,
+  distibutiveData,
+  evalQuestion,
+};
