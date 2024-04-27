@@ -1,33 +1,38 @@
 import { createLazyFileRoute, useNavigate } from "@tanstack/react-router";
-import BackgroundLayout from "../components/Layout/BackgroundLayout";
 import NormalButton from "../components/Button/NormalButton";
-import AhliTable from "../components/Table/AhliTable";
-import { useAnswerStore } from "../hooks/useAnswerState";
-import MultiplicationCardRevised from "../components/Card/MultiplicationCardRevised";
+import BackgroundLayout from "../components/Layout/BackgroundLayout";
+import Title from "../components/Title/Title";
 
-const Asal = () => {
+const Ahli = () => {
   const navigate = useNavigate({ from: "/" });
-  const selectedChoosen = useAnswerStore((state) => state.choosenAhli);
   return (
     <>
       <BackgroundLayout
         title="Selamat Datang!"
-        image="image/background/TestBackground.png"
+        image="image/background/ArrowBackground.png"
       >
-        <div className="flex gap-5 w-full h-full items-center justify-between min-h-screen px-20">
-          <div className="flex flex-col gap-5 w-3/5">
-            <AhliTable />
-            <div className="flex gap-5">
-              <NormalButton
-                text={"Kembali Ke Menu"}
-                type={"button"}
-                onClick={() => navigate({ to: "/select" })}
-              />
-            </div>
-          </div>
-          {selectedChoosen.column && selectedChoosen.row && (
-            <MultiplicationCardRevised />
-          )}
+        <Title />
+        <div className="mx-auto flex flex-col gap-5 w-full items-center mt-20">
+          <NormalButton
+            text={"Asosiatif"}
+            type={"button"}
+            onClick={() => navigate({ to: "/asosiatif" })}
+          />
+          <NormalButton
+            text={"Komutatif"}
+            type={"button"}
+            onClick={() => navigate({ to: "/komutatif" })}
+          />
+          <NormalButton
+            text={"Distributif"}
+            type={"button"}
+            onClick={() => navigate({ to: "/distributif" })}
+          />
+          <NormalButton
+            text={"Kembali ke Awal"}
+            type={"button"}
+            onClick={() => navigate({ to: "/" })}
+          />
         </div>
       </BackgroundLayout>
     </>
@@ -35,5 +40,5 @@ const Asal = () => {
 };
 
 export const Route = createLazyFileRoute("/ahli")({
-  component: Asal,
+  component: Ahli,
 });
