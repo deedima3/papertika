@@ -1,9 +1,9 @@
 import { createLazyFileRoute, useNavigate } from "@tanstack/react-router";
 import BackgroundLayout from "../components/Layout/BackgroundLayout";
 import NormalButton from "../components/Button/NormalButton";
-import MultiplicationCardRevised from "../components/Card/MultiplicationCardRevised";
 import AssoDistiTable from "../components/Table/AssoDistiTable";
 import { useDistributiveStore } from "../hooks/useDistributiveState";
+import DistributiveCardRevised from "../components/Card/DistributiveCard";
 
 const Distibutif = () => {
   const navigate = useNavigate({ from: "/komutatif" });
@@ -23,7 +23,7 @@ const Distibutif = () => {
               tableState={tableState}
               activeColumn={activeColumn}
               setChoosen={setChoosen}
-              title={"Kelompok Assosiatif"}
+              title={"Kelompok Distributif"}
             />
             <div className="flex gap-5">
               <NormalButton
@@ -33,9 +33,7 @@ const Distibutif = () => {
               />
             </div>
           </div>
-          {activeColumn.col && activeColumn.row && (
-            <MultiplicationCardRevised />
-          )}
+          {activeColumn.col && activeColumn.row && <DistributiveCardRevised />}
         </div>
       </BackgroundLayout>
     </>
