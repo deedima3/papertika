@@ -17,40 +17,40 @@ const SingleBall = () => {
 };
 
 const BallGrouper = () => {
-  const [isGrouped, setIsGrouped] = useState(true);
+  const [isGrouped, setIsGrouped] = useState(false);
   return (
     <div className="flex items-center gap-24">
       {isGrouped ? (
         <div className="flex gap-24">
           <div className="flex flex-col gap-24">
-            <div className="flex gap-2">
+            <div className="flex gap-2 border-8 p-5 border-gray-900">
               <SingleBall />
               <SingleBall />
               <SingleBall />
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-2 border-8 p-5 border-gray-900">
               <SingleBall />
               <SingleBall />
               <SingleBall />
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-2 border-8 p-5 border-gray-900">
               <SingleBall />
               <SingleBall />
               <SingleBall />
             </div>
           </div>
           <div className="flex flex-col gap-24">
-            <div className="flex gap-2">
+            <div className="flex gap-2 border-8 p-5 border-gray-900">
               <SingleBall />
               <SingleBall />
               <SingleBall />
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-2 border-8 p-5 border-gray-900">
               <SingleBall />
               <SingleBall />
               <SingleBall />
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-2 border-8 p-5 border-gray-900">
               <SingleBall />
               <SingleBall />
               <SingleBall />
@@ -59,7 +59,7 @@ const BallGrouper = () => {
         </div>
       ) : (
         <div className="flex gap-28">
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 border-8 p-5 border-gray-900">
             <div className="flex gap-2">
               <SingleBall />
               <SingleBall />
@@ -71,7 +71,7 @@ const BallGrouper = () => {
               <SingleBall />
             </div>
           </div>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 border-8 p-5 border-gray-900">
             <div className="flex gap-2">
               <SingleBall />
               <SingleBall />
@@ -83,7 +83,7 @@ const BallGrouper = () => {
               <SingleBall />
             </div>
           </div>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 border-8 p-5 border-gray-900">
             <div className="flex gap-2">
               <SingleBall />
               <SingleBall />

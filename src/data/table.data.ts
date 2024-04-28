@@ -49,7 +49,7 @@ const distibutiveData = [
 ];
 
 const evalQuestion = {
-  question: "Manakah yang merupakan hukum komutatif dan asosiatif",
+  question: "Pilihlah perkalian yang menggunakan hukum komutatif dan hukum asosiatif",
   answer: [
     {
       choice: "37 x 5 = 5 x 37",
