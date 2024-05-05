@@ -19,6 +19,11 @@ const Index = () => {
             onClick={() => navigate({ to: "/select" })}
           />
           <NormalButton
+            text={"Tutorial"}
+            type={"button"}
+            onClick={() => navigate({ to: "/tutorial" })}
+          />
+          <NormalButton
             text={"Profil Pengembang"}
             type={"button"}
             onClick={() => navigate({ to: "/profile" })}
