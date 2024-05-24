@@ -13,7 +13,7 @@ const ThirdSlide = () => {
         damping: 20,
       }}
     >
-      <p className="absolute top-0 font-sans text-2xl px-10 py-16 h-max stroke-[#412416] text-[#FFF2C7] font-outline-2 fix-stroke ">
+      <p className="absolute top-0 font-sans text-2xl px-10 py-16 h-max stroke-[#412416] text-[#FFF2C7] font-outline-2 fix-stroke flex-col gap-2 flex">
         Hukum pengelompokkan terjadi apabila hasil dari perkalian sama walaupun
         dikerjakan dari mana saja.
         <br />

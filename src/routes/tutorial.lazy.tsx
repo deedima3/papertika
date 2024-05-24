@@ -25,32 +25,24 @@ const Tutorial = () => {
           >
             <div className="absolute top-0 font-sans text-2xl px-14 py-16 h-max stroke-[#412416] text-[#FFF2C7] font-outline-2 fix-stroke flex flex-col gap-5">
               <h1 className="text-4xl text-center">
-                Tutorial Penggunaan Aplikasi Papertika
+                Tutorial Penggunaan Aplikasi PAPERTIKA
               </h1>
               <ol>
+                <li>Simaklah materi yang telah disajikan pada menu materi.</li>
                 <li>
-                  Buka aplikasi dan pilih opsi "Materi" untuk memilih topik
-                  matematika yang ingin dipelajari.
+                  Setelah membaca materi, pilih menu "Asal" kemudian klik tanda
+                  bintang yang terkunci pada papan perkalian secara berurutan
+                  dari perkalian 2, jika semua sudah terisi klik kembali ke menu
+                  utama.
                 </li>
                 <li>
-                  Eksplorasi modul materi yang menyediakan penjelasan dengan
-                  animasi dan gambar.
+                  Selanjutnya, pilih salah satu menu ahli untuk diselesaikan
+                  dengan cara klik (tanda bintang) yang ada pada papan perkalian
+                  kelompok ahli baik itu di papan (asosiatif, komutatif, atau
+                  distributif), jika sudah klik tombol kembali ke menu.
                 </li>
                 <li>
-                  Gunakan opsi "Tabel Asal" dan "Tabel Ahli" untuk melatih
-                  keterampilan matematika dengan berbagai operasi.
-                </li>
-                <li>
-                  Gunakan opsi "Evaluasi" untuk menguji pemahaman anak tentang
-                  materi yang telah dipelajari.
-                </li>
-                <li>
-                  Pastikan untuk memberikan pujian dan dorongan kepada anak
-                  Anda.
-                </li>
-                <li>
-                  Jadwalkan sesi pembelajaran yang teratur sambil terlibat dalam
-                  proses belajar mereka.
+                Terakhir pilih menu evaluasi kemudian pilihlah jawaban yang benar!
                 </li>
               </ol>
             </div>

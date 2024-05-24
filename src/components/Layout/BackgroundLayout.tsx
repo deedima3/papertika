@@ -17,7 +17,7 @@ const BackgroundLayout = ({
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Papertika | {title}</title>
+        <title>PAPERTIKA | {title}</title>
         <link
           rel="apple-touch-icon"
           sizes="180x180"

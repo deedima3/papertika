@@ -5,6 +5,7 @@ import BallGrouper from "../components/Slides/BallGrouper";
 import NormalButton from "../components/Button/NormalButton";
 import SecondSlide from "../components/Slides/SecondSlide";
 import ThirdSlide from "../components/Slides/ThirdSlide";
+import FourthSlide from "../components/Slides/FourthSlide";
 
 const Slides = () => {
   const navigate = useNavigate({ from: "/" });
@@ -20,19 +21,20 @@ const Slides = () => {
           {selectedSlide == 0 ? <BallGrouper /> : ""}
           {selectedSlide == 1 ? <SecondSlide /> : ""}
           {selectedSlide == 2 ? <ThirdSlide /> : ""}
+          {selectedSlide == 3 ? <FourthSlide /> : ""}
           <div className="flex gap-24">
             <NormalButton
               text={"Back"}
               type={"button"}
               onClick={() =>
-                setSelectedSlides(selectedSlide == 0 ? 2 : selectedSlide - 1)
+                setSelectedSlides(selectedSlide == 0 ? 3 : selectedSlide - 1)
               }
             />
             <NormalButton
               text={"Next"}
               type={"button"}
               onClick={() =>
-                setSelectedSlides(selectedSlide == 2 ? 0 : selectedSlide + 1)
+                setSelectedSlides(selectedSlide == 3 ? 0 : selectedSlide + 1)
               }
             />
             <NormalButton
