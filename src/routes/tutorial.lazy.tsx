@@ -2,9 +2,29 @@ import { createLazyFileRoute, useNavigate } from "@tanstack/react-router";
 import BackgroundLayout from "../components/Layout/BackgroundLayout";
 import { motion } from "framer-motion";
 import NormalButton from "../components/Button/NormalButton";
+import { useEffect } from "react";
+import { fourAudio, oneAudio, threeAudio, twoAudio } from "../lib/tutorialsound";
 
 const Tutorial = () => {
   const navigate = useNavigate({ from: "/" });
+  useEffect(() => {
+    oneAudio.play()
+    oneAudio.addEventListener("ended", () => {
+      oneAudio.currentTime = 0
+      twoAudio.play()
+    })
+    twoAudio.addEventListener("ended", () => {
+      twoAudio.currentTime = 0
+      threeAudio.play()
+    })
+    threeAudio.addEventListener("ended", () => {
+      threeAudio.currentTime = 0
+      fourAudio.play()
+    })
+    fourAudio.addEventListener("ended", () => {
+      fourAudio.currentTime = 0
+    })
+  }, [])
   return (
     <>
       <BackgroundLayout
